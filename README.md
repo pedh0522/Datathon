@@ -1,4 +1,4 @@
-# Diabetes Classification using Machine Learning and Neural Networks
+# Diabetes Classification
 
 This project aims to predict whether a patient has diabetes using various machine learning models, data preprocessing techniques, and a neural network classifier. It utilizes multiple classification algorithms like Logistic Regression, Decision Trees, Random Forest, XGBoost, CatBoost, and a Neural Network (PyTorch). Additionally, techniques such as PCA (Principal Component Analysis), feature selection, oversampling (SMOTE and ADASYN), and hyperparameter tuning via GridSearch, RandomSearch, and Bayesian optimization are employed.
 

@@ -15,6 +15,7 @@ def plot_correlation_matrix(df):
     sns.heatmap(df.corr(), annot=True, cmap='coolwarm')
     plt.title("Correlation Matrix")
     plt.show()
+    
 def plot_distributions(df, cols=None):
     """
     Plots the distribution of numeric features.

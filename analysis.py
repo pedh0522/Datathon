@@ -35,16 +35,28 @@ def perform_lda(df, target_column, n_components=2):
     
     return lda_df
 
-def multivariate_analysis(df):
+def multivariate_analysis(df, pairplot_threshold=2):
     """
     Perform multivariate analysis on the entire DataFrame.
+
+    Parameters:
+    - df: DataFrame to analyze.
+    - pairplot_threshold: Max number of features to include in a single pairplot. Default is 5.
     """
     # Correlation heatmap
-    plt.figure(figsize=(10, 8))
-    sns.heatmap(df.corr(), annot=True, cmap='coolwarm', fmt='.2f')
-    plt.title("Correlation Matrix")
+    plt.figure(figsize=(12, 10))
+    sns.heatmap(df.corr(), annot=True, cmap='coolwarm', fmt='.2f', square=True, cbar_kws={'shrink': 0.75})
+    plt.title("Enhanced Correlation Matrix", fontsize=16)
+    plt.xticks(fontsize=10)
+    plt.yticks(fontsize=10)
+    plt.tight_layout()
     plt.show()
+    print("HERE")
+    # Splitting the pairplot into manageable chunks
+    num_features = len(df.columns)
+    feature_groups = [df.columns[i:i + pairplot_threshold] for i in range(0, num_features, pairplot_threshold)]
 
-    # Pair plot for visualizing distributions and relationships
-    sns.pairplot(df)
-    plt.show()
+    for idx, group in enumerate(feature_groups):
+        sns.pairplot(df[group])
+        plt.suptitle(f"Pairplot for Feature Group {idx + 1}", y=1.02, fontsize=16)
+        plt.show()
